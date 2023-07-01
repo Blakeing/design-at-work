@@ -1,18 +1,97 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: ["class"],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        primary: "#562D6D",
+        body: "#4a4a4a",
+        secondary: "#009671",
+      },
+      fontFamily: {
+        sans: ["var(--font-potano-sans)", ...fontFamily.sans],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        enterFromRight: {
+          from: { opacity: 0, transform: "translateX(200px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
+        },
+        enterFromLeft: {
+          from: { opacity: 0, transform: "translateX(-200px)" },
+          to: { opacity: 1, transform: "translateX(0)" },
+        },
+        exitToRight: {
+          from: { opacity: 1, transform: "translateX(0)" },
+          to: { opacity: 0, transform: "translateX(200px)" },
+        },
+        exitToLeft: {
+          from: { opacity: 1, transform: "translateX(0)" },
+          to: { opacity: 0, transform: "translateX(-200px)" },
+        },
+        scaleIn: {
+          from: { opacity: 0, transform: "rotateX(-10deg) scale(0.9)" },
+          to: { opacity: 1, transform: "rotateX(0deg) scale(1)" },
+        },
+        scaleOut: {
+          from: { opacity: 1, transform: "rotateX(0deg) scale(1)" },
+          to: { opacity: 0, transform: "rotateX(-10deg) scale(0.95)" },
+        },
+        fadeIn: {
+          from: { opacity: 0 },
+          to: { opacity: 1 },
+        },
+        fadeOut: {
+          from: { opacity: 1 },
+          to: { opacity: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        scaleIn: "scaleIn 200ms ease",
+        scaleOut: "scaleOut 200ms ease",
+        fadeIn: "fadeIn 200ms ease",
+        fadeOut: "fadeOut 200ms ease",
+        enterFromLeft: "enterFromLeft 250ms ease",
+        enterFromRight: "enterFromRight 250ms ease",
+        exitToLeft: "exitToLeft 250ms ease",
+        exitToRight: "exitToRight 250ms ease",
       },
     },
   },
-  plugins: [],
-}
+  // plugins: [require("tailwindcss-animate")],
+  plugins: [
+    plugin(({ matchUtilities }) => {
+      matchUtilities({
+        perspective: (value) => ({
+          perspective: value,
+        }),
+      });
+    }),
+    require("tailwindcss-animate"),
+  ],
+};
