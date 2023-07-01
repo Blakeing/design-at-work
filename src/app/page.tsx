@@ -5,7 +5,7 @@ import awareness from "../../public/generate-awarenes-icon.png";
 import business from "../../public/grow-your-business-icon.png";
 import Image from "next/image";
 import TopNavBar from "@/components/TopNavBar";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import { Icons } from "@/components/Icons";
 
 const people = [
