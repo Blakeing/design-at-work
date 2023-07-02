@@ -16,7 +16,7 @@ const Header: FC<HeaderProps> = ({}) => {
   return (
     <div className="w-full top-0 sticky z-10 bg-white">
       <TopNavBar />
-      <Menubar className="menu hidden lg:flex divide-x rounded-none  justify-center space-x-0  p-0 h-full border-y border-x-0  mx-auto">
+      <Menubar className="menu  hidden lg:flex divide-x rounded-none  justify-center space-x-0  p-0 h-full border-y border-x-0  mx-auto">
         <MenubarMenu>
           <MenubarTrigger className="uppercase border-l   px-12 font-medium text-lg tracking-widest bg-white focus:text-secondary hover:text-secondary focus:bg-white data-[active]:text-secondary data-[state=open]:bg-white cursor-pointer">
             Branding

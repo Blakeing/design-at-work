@@ -31,7 +31,7 @@ export default function Home() {
     <>
       <Header />
       <main className="relative flex flex-col  ">
-        <div className="min-h-[calc(100vh-204px)]">
+        <div className="min-h-[calc(100vh-123px)]">
           <Image
             src={banner}
             alt=""
@@ -57,7 +57,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <section className="relative container py-24">
+        <section className="relative container pt-24 pb-32">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
               <h2 className="text-primary uppercase mb-6 text-3xl">
@@ -99,7 +99,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className=" relative p-16 bg-white daw-corner-frame max-w-fit ">
+            <div className=" relative p-12 bg-white daw-corner-frame max-w-fit ">
               <ul role="list" className=" ">
                 {people.map((person) => (
                   <li key={person.email} className="flex gap-x-4 py-5">
